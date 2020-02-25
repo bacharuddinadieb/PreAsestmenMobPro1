@@ -75,8 +75,7 @@ class PersegiPanjangFragment : Fragment() {
         outState.run {
             putDouble(KEY_HASIL_LUAS_PERSEGI_PANJANG, binding.tvHasilLuasPersegiPanjang.text.toString().toDouble())
             putDouble(
-                KEY_HASIL_KELILING_PERSEGI_PANJANG,
-                binding.tvHasilKelilingPersegiPanjang.text.toString().toDouble()
+                KEY_HASIL_KELILING_PERSEGI_PANJANG, binding.tvHasilKelilingPersegiPanjang.text.toString().toDouble()
             )
         }
     }
