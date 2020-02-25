@@ -1,11 +1,13 @@
 package d3rpla_4202_6706180113.preasestment1mobpro
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import d3rpla_4202_6706180113.preasestment1mobpro.databinding.FragmentPersegiPanjangBinding
@@ -24,6 +26,7 @@ class PersegiPanjangFragment : Fragment() {
     lateinit var binding: FragmentPersegiPanjangBinding
     private val KEY_HASIL_KELILING_PERSEGI_PANJANG = "KEY_HASIL_KELILING_PERSEGI_PANJANG"
     private val KEY_HASIL_LUAS_PERSEGI_PANJANG = "KEY_HASIL_PERSEGI_PANJANG"
+    @SuppressLint("WrongConstant")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,12 +42,16 @@ class PersegiPanjangFragment : Fragment() {
         }
 
         binding.btHitungPersegiPanjang.setOnClickListener {
-            val hasilKeliling =
-                hitungKeliling(binding.etPanjang.text.toString().toInt(), binding.etLebar.text.toString().toInt())
-            val hasilLuas =
-                hitungLuas(binding.etPanjang.text.toString().toInt(), binding.etLebar.text.toString().toInt())
-            binding.tvHasilKelilingPersegiPanjang.text = hasilKeliling.toString()
-            binding.tvHasilLuasPersegiPanjang.text = hasilLuas.toString()
+            if (binding.etPanjang.text.toString() == "" || binding.etLebar.text.toString() == "") {
+                Toast.makeText(context, "Panjang dan Lebar Harus Diisi!", 5000).show()
+            } else {
+                val hasilKeliling =
+                    hitungKeliling(binding.etPanjang.text.toString().toInt(), binding.etLebar.text.toString().toInt())
+                val hasilLuas =
+                    hitungLuas(binding.etPanjang.text.toString().toInt(), binding.etLebar.text.toString().toInt())
+                binding.tvHasilKelilingPersegiPanjang.text = hasilKeliling.toString()
+                binding.tvHasilLuasPersegiPanjang.text = hasilLuas.toString()
+            }
         }
 
         binding.btShareHasilPersegiPanjang.setOnClickListener {

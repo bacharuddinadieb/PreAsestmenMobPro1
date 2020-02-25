@@ -1,11 +1,13 @@
 package d3rpla_4202_6706180113.preasestment1mobpro
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import d3rpla_4202_6706180113.preasestment1mobpro.databinding.FragmentSegitigaBinding
@@ -25,6 +27,7 @@ class SegitigaFragment : Fragment() {
     private val KEY_HASIL_KELILING_SEGITIGA = "KEY_HASIL_KELILING_SEGITIGA"
     private val KEY_HASIL_LUAS_SEGITIGA = "KEY_HASIL_LUAS_SEGITIGA"
 
+    @SuppressLint("WrongConstant")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,11 +41,16 @@ class SegitigaFragment : Fragment() {
         }
 
         binding.btHitungSegitiga.setOnClickListener {
-            val hasilKeliling =
-                hitungKeliling(binding.etAlas.text.toString().toInt(), binding.etTinggi.text.toString().toInt())
-            val hasilLuas = hitungLuas(binding.etAlas.text.toString().toInt(), binding.etTinggi.text.toString().toInt())
-            binding.tvHasilLuasSegitiga.text = hasilLuas.toString()
-            binding.tvHasilKelilingSegitiga.text = hasilKeliling.toString()
+            if (binding.etAlas.text.toString() == "" || binding.etTinggi.text.toString() == "") {
+                Toast.makeText(context, "Alas dan Lebar Harus Diisi!", 5000).show()
+            } else {
+                val hasilKeliling =
+                    hitungKeliling(binding.etAlas.text.toString().toInt(), binding.etTinggi.text.toString().toInt())
+                val hasilLuas =
+                    hitungLuas(binding.etAlas.text.toString().toInt(), binding.etTinggi.text.toString().toInt())
+                binding.tvHasilLuasSegitiga.text = hasilLuas.toString()
+                binding.tvHasilKelilingSegitiga.text = hasilKeliling.toString()
+            }
         }
 
         binding.btShareHasilSegitiga.setOnClickListener {
