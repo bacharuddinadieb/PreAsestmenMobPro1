@@ -2,12 +2,12 @@ package d3rpla_4202_6706180113.preasestment1mobpro
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import d3rpla_4202_6706180113.preasestment1mobpro.databinding.FragmentHomeBinding
 
 
@@ -32,8 +32,19 @@ class HomeFragment : Fragment() {
         binding.btPersegiPanjang.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_persegiPanjangFragment))
         binding.btSegitiga.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_segitigaFragment))
 
+        setHasOptionsMenu(true)
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menuutama, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController()) || super.onOptionsItemSelected(
+            item
+        )
+    }
 
 }
