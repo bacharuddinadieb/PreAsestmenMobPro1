@@ -1,6 +1,7 @@
 package d3rpla_4202_6706180113.preasestment1mobpro
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +45,12 @@ class SegitigaFragment : Fragment() {
             binding.tvHasilKelilingSegitiga.text = hasilKeliling.toString()
         }
 
+        binding.btShareHasilSegitiga.setOnClickListener {
+            val isiPesan =
+                "Hasil perhitungan segitiga: \nLuas = ${binding.tvHasilLuasSegitiga.text} \nKeliling = ${binding.tvHasilKelilingSegitiga.text}"
+            startActivity(intentShare(isiPesan))
+        }
+
         return binding.root
     }
 
@@ -54,6 +61,12 @@ class SegitigaFragment : Fragment() {
 
     fun hitungLuas(alas: Int, tinggi: Int): Double {
         return (alas * tinggi / 2).toDouble()
+    }
+
+    fun intentShare(isiPesan: String): Intent {
+        val intentShare = Intent(Intent.ACTION_SEND)
+        intentShare.setType("text/plain").putExtra(Intent.EXTRA_TEXT, isiPesan)
+        return intentShare
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

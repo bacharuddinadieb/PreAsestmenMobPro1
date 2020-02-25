@@ -1,6 +1,7 @@
 package d3rpla_4202_6706180113.preasestment1mobpro
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,6 +47,12 @@ class PersegiPanjangFragment : Fragment() {
             binding.tvHasilLuasPersegiPanjang.text = hasilLuas.toString()
         }
 
+        binding.btShareHasilPersegiPanjang.setOnClickListener {
+            val isiPesan =
+                "Hasil perhitungan persegi panjang:\nLuas = ${binding.tvHasilLuasPersegiPanjang.text} \nKeliling = ${binding.tvHasilKelilingPersegiPanjang.text}"
+            startActivity(intentShare(isiPesan))
+        }
+
         return binding.root
     }
 
@@ -55,6 +62,12 @@ class PersegiPanjangFragment : Fragment() {
 
     fun hitungLuas(panjang: Int, lebar: Int): Double {
         return (panjang * lebar).toDouble()
+    }
+
+    fun intentShare(isiPesan: String): Intent {
+        val intentShare = Intent(Intent.ACTION_SEND)
+        intentShare.setType("text/plain").putExtra(Intent.EXTRA_TEXT, isiPesan)
+        return intentShare
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
