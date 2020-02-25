@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/navigasi" app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment" android:name="d3rpla_4202_6706180113.preasestment1mobpro.HomeFragment"
+              android:label="HomeFragment">
+        <action android:id="@+id/action_homeFragment_to_persegiPanjangFragment"
+                app:destination="@id/persegiPanjangFragment"/>
+        <action android:id="@+id/action_homeFragment_to_segitigaFragment" app:destination="@id/segitigaFragment"/>
+        <action android:id="@+id/action_homeFragment_to_aboutFragment" app:destination="@id/aboutFragment"/>
+    </fragment>
+    <fragment android:id="@+id/aboutFragment" android:name="d3rpla_4202_6706180113.preasestment1mobpro.AboutFragment"
+              android:label="AboutFragment"/>
+    <fragment android:id="@+id/persegiPanjangFragment"
+              android:name="d3rpla_4202_6706180113.preasestment1mobpro.PersegiPanjangFragment"
+              android:label="PersegiPanjangFragment"/>
+    <fragment android:id="@+id/segitigaFragment"
+              android:name="d3rpla_4202_6706180113.preasestment1mobpro.SegitigaFragment"
+              android:label="SegitigaFragment"/>
+</navigation>
