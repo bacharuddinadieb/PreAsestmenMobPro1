@@ -20,13 +20,21 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class SegitigaFragment : Fragment() {
-    lateinit var binding: FragmentSegitigaBinding
+    private lateinit var binding: FragmentSegitigaBinding
+    private val KEY_HASIL_KELILING_SEGITIGA = "KEY_HASIL_KELILING_SEGITIGA"
+    private val KEY_HASIL_LUAS_SEGITIGA = "KEY_HASIL_LUAS_SEGITIGA"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_segitiga, container, false)
+
+        if (savedInstanceState != null) {
+            binding.tvHasilLuasSegitiga.text = savedInstanceState.getDouble(KEY_HASIL_LUAS_SEGITIGA).toString()
+            binding.tvHasilKelilingSegitiga.text = savedInstanceState.getDouble(KEY_HASIL_KELILING_SEGITIGA).toString()
+        }
 
         binding.btHitungSegitiga.setOnClickListener {
             val hasilKeliling =
@@ -46,6 +54,14 @@ class SegitigaFragment : Fragment() {
 
     fun hitungLuas(alas: Int, tinggi: Int): Double {
         return (alas * tinggi / 2).toDouble()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.run {
+            putDouble(KEY_HASIL_KELILING_SEGITIGA, binding.tvHasilKelilingSegitiga.text.toString().toDouble())
+            putDouble(KEY_HASIL_LUAS_SEGITIGA, binding.tvHasilLuasSegitiga.text.toString().toDouble())
+        }
     }
 
 }

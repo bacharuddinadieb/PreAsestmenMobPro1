@@ -21,6 +21,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class PersegiPanjangFragment : Fragment() {
     lateinit var binding: FragmentPersegiPanjangBinding
+    private val KEY_HASIL_KELILING_PERSEGI_PANJANG = "KEY_HASIL_KELILING_PERSEGI_PANJANG"
+    private val KEY_HASIL_LUAS_PERSEGI_PANJANG = "KEY_HASIL_PERSEGI_PANJANG"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,12 +30,19 @@ class PersegiPanjangFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_persegi_panjang, container, false)
 
+        if (savedInstanceState != null) {
+            binding.tvHasilLuasPersegiPanjang.text =
+                savedInstanceState.getDouble(KEY_HASIL_LUAS_PERSEGI_PANJANG).toString()
+            binding.tvHasilKelilingPersegiPanjang.text =
+                savedInstanceState.getDouble(KEY_HASIL_KELILING_PERSEGI_PANJANG).toString()
+        }
+
         binding.btHitungPersegiPanjang.setOnClickListener {
             val hasilKeliling =
                 hitungKeliling(binding.etPanjang.text.toString().toInt(), binding.etLebar.text.toString().toInt())
             val hasilLuas =
                 hitungLuas(binding.etPanjang.text.toString().toInt(), binding.etLebar.text.toString().toInt())
-//            binding.tvHasilKelilingPersegiPanjang.setText(hasilKeliling.toString())
+            binding.tvHasilKelilingPersegiPanjang.text = hasilKeliling.toString()
             binding.tvHasilLuasPersegiPanjang.text = hasilLuas.toString()
         }
 
@@ -48,5 +57,15 @@ class PersegiPanjangFragment : Fragment() {
         return (panjang * lebar).toDouble()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.run {
+            putDouble(KEY_HASIL_LUAS_PERSEGI_PANJANG, binding.tvHasilLuasPersegiPanjang.text.toString().toDouble())
+            putDouble(
+                KEY_HASIL_KELILING_PERSEGI_PANJANG,
+                binding.tvHasilKelilingPersegiPanjang.text.toString().toDouble()
+            )
+        }
+    }
 
 }
