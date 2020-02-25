@@ -10,9 +10,12 @@
         <fragment
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:name="d3rpla_4202_6706180113.preasestment1mobpro.HomeFragment" android:id="@+id/fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:id="@+id/fragmentUtama"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:navGraph="@navigation/navigasi"
+                app:defaultNavHost="true"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
