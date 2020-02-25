@@ -7,7 +7,7 @@
             android:layout_height="match_parent"
             tools:context=".HomeFragment">
         <TextView
-                android:text="Penghitung Persegi Panjang dan Segitiga"
+                android:text="@string/penghitung_persegi_panjang_dan_segitiga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView2" app:layout_constraintEnd_toEndOf="parent"
@@ -15,14 +15,14 @@
                 android:layout_marginTop="100dp" android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
         <Button
-                android:text="Persegi Panjang"
+                android:text="@string/persegi_panjang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/bt_persegiPanjang" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/textView2"/>
         <Button
-                android:text="Segitiga"
+                android:text="@string/segitiga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/bt_segitiga" app:layout_constraintStart_toStartOf="parent"
