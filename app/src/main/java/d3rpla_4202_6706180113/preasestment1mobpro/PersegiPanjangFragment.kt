@@ -3,6 +3,7 @@ package d3rpla_4202_6706180113.preasestment1mobpro
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -72,8 +73,10 @@ class PersegiPanjangFragment : Fragment() {
     }
 
     fun intentShare(isiPesan: String): Intent {
-        val intentShare = Intent(Intent.ACTION_SEND)
-        intentShare.setType("text/plain").putExtra(Intent.EXTRA_TEXT, isiPesan)
+        val intentShare = Intent(Intent.ACTION_SENDTO)
+        intentShare.setData(Uri.parse("mailto:"))
+            .putExtra(Intent.EXTRA_SUBJECT, "Hitung - Hitungan Persegi")
+            .putExtra(Intent.EXTRA_TEXT, isiPesan)
         return intentShare
     }
 
